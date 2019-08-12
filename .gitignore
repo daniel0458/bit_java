@@ -21,6 +21,7 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+<<<<<<< HEAD
 # ÄÄÆÄÀÏ °á°ú¹° Á¦¿Ü
 *.com
 *.class
@@ -42,6 +43,29 @@ ehthumbs.db
 Thumbs.db
  
 # ÀÌÅ¬¸³½º¿¡¼­ »ý¼ºÇÏ´Â ÇÁ·ÎÁ§Æ® Á¤º¸ ÆÄÀÏ Á¦¿Ü
+=======
+# ì»´íŒŒì¼ ê²°ê³¼ë¬¼ ì œì™¸
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+ 
+# ë¡œê·¸íŒŒì¼ ì œì™¸
+*.log
+ 
+# ìš´ì˜ì²´ì œì—ì„œ ë§Œë“œëŠ” ì‹œìŠ¤í…œ íŒŒì¼ë“¤ ì œì™¸
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+ 
+# ì´í´ë¦½ìŠ¤ì—ì„œ ìƒì„±í•˜ëŠ” í”„ë¡œì íŠ¸ ì •ë³´ íŒŒì¼ ì œì™¸
+>>>>>>> branch 'master' of https://github.com/daniel0458/bit_java.git
 .metadata
 bin/
 tmp/

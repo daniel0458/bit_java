@@ -10,6 +10,8 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
+
 public class TcpIpServer {
 	public static void main(String[] args) {
 		ServerSocket serverSocket = null;
@@ -51,8 +53,9 @@ class ServerThread extends Thread {
 			clientList.add(bw);
 			
 			name = br.readLine();
-			
+//			System.out.println(name);
 			broadcast( "님이 입장하셨습니다");
+			
 //			bw.write("Hello ~~~" + name + "님 \n");
 //			bw.flush();
 
@@ -64,7 +67,7 @@ class ServerThread extends Thread {
 	}
 
 	@Override
-	public void run() {
+	public synchronized void run() {
 		String msg = null;
 		try {
 			while ((msg = br.readLine()) != null) {

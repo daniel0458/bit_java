@@ -21,10 +21,11 @@ public class MyStack<E> {
 		}
 	}
 	public boolean isEmpty() {
-		if(top == 0) {
-			return true;
-		}
-		return false;
+//		if(top == 0) {
+//			return true;
+//		}
+//		return false;
+		return (top == 0) ? true : false;
 	}
 	public boolean isFull() {
 		if(top == stack.length) {

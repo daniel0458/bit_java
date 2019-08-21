@@ -165,8 +165,31 @@ alter table dept2 add constraint dept2_pk primary key(deptno);
 drop table emp2;
 create table emp2 as select * from emp;
 alter table emp2 add constraint emp2_pk primary key(empno);
-alter table emp2 add foreign key(deptno) references dept2;
-alter table emp2 add foreign key(mgr) references emp2; 
+
+alter table emp2 add constraint emp2_fk_mgr foreign key(mgr) references emp2; 
+
+alter table emp2 add constraint emp2_fk1 foreign key(deptno) references dept2;
+
+delete from dept2 where deptno=20; --안됨
+
+
+
+alter table emp2 drop constraint emp2_fk1 ; 
+
+alter table emp2
+add constraint emp2_fk1
+foreign key(deptno) references dept2 ON DELETE SET NULL; --삭제되고 자식은 null로
+rollback;
+
+alter table emp2 drop constraint emp2_fk1 ; 
+
+alter table emp2
+add constraint emp2_fk1
+foreign key(deptno) references dept2 ON DELETE cascade; --삭제되고 자식튜플도 삭제
+
+delete from dept2 where deptno=20; --됨 , delete조건절의 차이
+rollback;
+
 select * from dept2;
 insert into dept2 values(50,'EDU','SEOUL');
 

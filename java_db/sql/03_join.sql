@@ -272,7 +272,7 @@ where (sal,deptno) in (select deptno,max(sal) from emp group by deptno);
 ##자신이 속한 부서의 평균 급여보다 적은 사원 리스트
 select *
 from emp outer
-where sal < (select avg(sal) from emp where deptno = outer.deptno);
+where sal > (select avg(sal) from emp where deptno = outer.deptno);
 
 #################
 rownum

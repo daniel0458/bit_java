@@ -47,6 +47,15 @@ where sal > (select avg(sal) from emp where deptno = e.deptno);
 
 select * from highsalavg;
 drop view highsalavg;
+
+select * from emp;
+select avg(sal) from emp;
+select avg(sal) from emp where deptno=10;
+
+create or replace view vvvv
+select * from emp outer
+where sal > (select avg(sal) from emp where deptno=outer.deptno);
+
 ######################################################
 sequence
 #####################################################
@@ -100,3 +109,4 @@ set autotrace off;
 
 
 select index_name,table_name from user_indexes;
+

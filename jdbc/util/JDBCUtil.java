@@ -18,13 +18,14 @@ public class JDBCUtil {
 		
 		try {
 			Properties p = new Properties();
-			p.load(new FileInputStream("c://lib//dbinfo.txt"));
+			p.load(new FileInputStream("C://lib//dbinfo.txt"));
 			String driver = p.getProperty("driver");
 			String url = p.getProperty("url"); 
 			String user = p.getProperty("user");	//madang hr
 			String pw = p.getProperty("pw");		//madang hr
 			
 			Class.forName(driver);
+			System.out.println("4");
 			con = DriverManager.getConnection(url,user,pw);
 		} catch (ClassNotFoundException e) {
 			System.out.println("JDBC Driver 확인 필요");

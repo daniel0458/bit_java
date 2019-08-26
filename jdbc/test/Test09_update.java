@@ -2,8 +2,8 @@ package test;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 
+import dao.DeptDao;
 import util.JDBCUtil;
 
 public class Test09_update {

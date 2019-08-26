@@ -2,9 +2,9 @@ package test;
 
 public class Dept {
 	
-	int deptno;
-	String dname;
-	String loc;
+	public int deptno;
+	public String dname;
+	public String loc;
 	
 	
 	

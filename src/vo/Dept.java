@@ -1,4 +1,4 @@
-package test;
+package vo;
 
 public class Dept {
 	

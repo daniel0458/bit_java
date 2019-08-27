@@ -1,7 +1,8 @@
 package jdbc_HW;
 
 import dao.BookDao;
-import test.Book;
+import vo.Book;
+
 
 public class TestBookDao {
 	public static void main(String[] args) {

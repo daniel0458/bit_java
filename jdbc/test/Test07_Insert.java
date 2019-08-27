@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import util.JDBCUtil;
+import vo.Employee;
 
 public class Test07_Insert {
 	public static void main(String[] args) {

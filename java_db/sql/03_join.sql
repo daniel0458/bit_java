@@ -299,3 +299,8 @@ where rownum between 1 and 4;
 select rownum,ename,sal,deptno,hiredate
 from (select * from emp order by sal desc)
 where rownum between 4 and 7;
+
+select * from(
+select rownum row#,deptno,dname,loc
+from (select * from dept order by deptno)
+)where row# between 4 and 6;

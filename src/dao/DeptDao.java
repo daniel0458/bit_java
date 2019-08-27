@@ -6,13 +6,14 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import test.Dept;
+
 import util.JDBCUtil;
+import vo.Dept;
 
 public class DeptDao {
 	
 	//Dept 테이블의 모든 레코드 정보
-	public List<Dept> getAllDeptRec() {
+	public List<Dept> getDeptRec() {
 		String sql = "select * from dept";
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -36,7 +37,7 @@ public class DeptDao {
 			}
 			
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.getStackTrace();
 		} finally {
 			JDBCUtil.close(con, ps, rs);
 			System.out.println(" ******* con 반납 ******* ");
@@ -44,6 +45,47 @@ public class DeptDao {
 		return list;
 	}
 	
+	//Dept 테이블의 모든 레코드 정보
+		public List<Dept> getDeptRec(int page,int n) {
+			String sql = "select * from( "+ 
+					"select rownum row#,deptno,dname,loc " + 
+					"from (select * from dept order by deptno) " + 
+					") where row# between ? and ? ";
+			
+			int start = n*(page-1)+1;
+			int end = start+(n-1);
+			
+			Connection con = null;
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			
+			List<Dept> list = new ArrayList<Dept>();
+			try {
+				con = JDBCUtil.getConnection();
+				System.out.println(" ******* con 할당 ******* ");
+				ps = con.prepareStatement(sql);
+				ps.setInt(1, start);
+				ps.setInt(2, end);
+
+				//? 세팅
+				//ps.setString(1, x);
+				
+				//실행및 결과값 핸들링
+				rs = ps.executeQuery();
+				while (rs.next()) {
+					list.add(new Dept(rs.getInt("deptno"), 
+							rs.getString("dname"), 
+							rs.getString("loc")));
+				}
+				
+			} catch (Exception e) {
+				e.getStackTrace();
+			} finally {
+				JDBCUtil.close(con, ps, rs);
+				System.out.println(" ******* con 반납 ******* ");
+			}
+			return list;
+		}
 	public int insertDept(Dept dept) {
 		String sql = "insert into dept(deptno,dname,loc) values(?,?,?)";
 		Connection con = null;

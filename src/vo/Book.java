@@ -1,4 +1,4 @@
-package test;
+package vo;
 
 import java.sql.Date;
 
